@@ -53,12 +53,11 @@ def analyze_stock(ticker, user_text):
 
     titles = [a['title'] for a in articles]
 
-    # --- שלב 3: בדיקת שפה (החלק שביקשת!) ---
-    # אם המילה "עברית" מופיעה בהודעה של המשתמש, נבקש מה-AI לענות בעברית
+    #  שלב 3: בדיקת שפה  ---
     is_hebrew = "עברית" in user_text.lower()
     language_instruction = "Respond entirely in Hebrew" if is_hebrew else "Respond in English"
 
-    # --- שלב 4: ה-Prompt ל-Groq ---
+    #  שלב 4: ה-Prompt ל-Groq ---
     prompt = f"""
     Analyze these news for {ticker}: {titles}. 
     Current status: {price_string}.
